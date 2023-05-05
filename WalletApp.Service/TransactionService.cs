@@ -41,8 +41,6 @@ public class TransactionService : ITransactionService
 
     public async Task<TransactionsListModel> GetTransactionsAsync(string userId)
     {
-        var (cardBalance, available) = GenerateRandBalence();
-
         var userTransactions = await _unitOfWork.Transaction.GetListAsync(x => x.OwnerId.ToString() == userId);
 
         return new TransactionsListModel
@@ -59,7 +57,7 @@ public class TransactionService : ITransactionService
         {
             CardBalance = cardBalance,
             Available = available,
-            NoPaymentDue = $"You’ve paid your {DateTime.Now.ToString("MMM")} balance",
+            NoPaymentDue = $"You’ve paid your {DateTime.Now:MMM} balance",
             DailyPoints = CalculateDailyPoints(),
         };
     }
