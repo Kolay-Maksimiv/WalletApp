@@ -58,7 +58,7 @@ public class TransactionService : ITransactionService
             CardBalance = cardBalance,
             Available = available,
             NoPaymentDue = $"You’ve paid your {DateTime.Now:MMM} balance",
-            DailyPoints = CalculateDailyPoints(),
+            DailyPoints = CalculateDailyPoints() / 1000,
         };
     }
 

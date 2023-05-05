@@ -21,7 +21,15 @@ builder.Services.AddGenericRepository();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("EnableCORS", builder =>
+    {
+        builder.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -30,6 +38,8 @@ app.UseSwaggerBuilder();
 app.UseHttpsRedirection();
 
 app.UseMiddleware(typeof(ErrorHandlingMiddleware));
+
+app.UseCors("EnableCORS");
 
 app.UseAuthorization();
 
