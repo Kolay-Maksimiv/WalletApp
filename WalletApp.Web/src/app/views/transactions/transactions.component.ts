@@ -47,7 +47,18 @@ export class TransactionsComponent {
     });
   }
 
-  openDeleteTransaction() {
-    this.dialog.open(DeleteTransctionModelComponent);
+  openDeleteTransaction(id: number) {
+    const dialogRef =  this.dialog.open(DeleteTransctionModelComponent, {
+      data : {
+        isDelete: true
+      }
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      if(res) {
+        this.transactionService.deleteTranscation(id).subscribe(() => {
+          this.transactions$ = this.transactions$.pipe(map(transactions => transactions.filter(t => t.id !== id)));
+        });
+      }
+    })
   }
 }

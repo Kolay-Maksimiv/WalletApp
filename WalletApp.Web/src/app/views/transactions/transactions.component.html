@@ -62,7 +62,7 @@
                 <ng-container matColumnDef="deleteTransaction">
                     <th mat-header-cell *matHeaderCellDef>Delete Transaction</th>
                     <td mat-cell *matCellDef="let element">
-                        <button mat-mini-fab color="warn" (click)="openDeleteTransaction()"
+                        <button mat-mini-fab color="warn" (click)="openDeleteTransaction(element.id)"
                             style="margin: auto;"><mat-icon>delete_forever</mat-icon>
                         </button>
                     </td>

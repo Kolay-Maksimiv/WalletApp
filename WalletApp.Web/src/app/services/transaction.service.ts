@@ -30,6 +30,14 @@ export class TransactionService {
           return throwError(error);
         })
       );
+  };
+
+  deleteTranscation(id: number) {
+    return this.http.delete(`${environment.apiUrl}Transactions/${id}`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(error);
+      })
+    );
   }
 }
 

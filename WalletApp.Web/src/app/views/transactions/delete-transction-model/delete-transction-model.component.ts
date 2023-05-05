@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-delete-transction-model',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class DeleteTransctionModelComponent {
 
+  constructor(public dialogRef: MatDialogRef<DeleteTransctionModelComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: { isDelete: boolean }) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }
