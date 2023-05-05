@@ -14,27 +14,32 @@
     <div class="row">
         <div class="col" style="margin: 10vh;">
             <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>First Name</mat-label>
-                            <input matInput placeholder="Ex. First Name">
-                          </mat-form-field>
+                <form [formGroup]="fg" (ngSubmit)="submit()">
+
+
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>First Name</mat-label>
+                                <input matInput placeholder="Ex. First Name" type="text" formControlName="firstName">
+                            </mat-form-field>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Last Name</mat-label>
-                            <input matInput placeholder="Ex. Last Name">
-                          </mat-form-field>
+                    <div class="row">
+                        <div class="col">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Last Name</mat-label>
+                                <input matInput placeholder="Ex. Last Name" type="text" formControlName="lastName">
+                            </mat-form-field>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col" style="display: flex;">
-                        <button mat-raised-button color="primary" style="margin: auto;">Create New User</button>
+                    <div class="row">
+                        <div class="col" style="display: flex;">
+                            <button type="submit" mat-raised-button color="primary" style="margin: auto;">Create New
+                                User</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>

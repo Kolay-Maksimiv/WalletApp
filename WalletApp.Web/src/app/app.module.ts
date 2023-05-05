@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsersComponent } from './views/users/users.component';
 import { UserCreateComponent } from './views/users/user-create/user-create.component';
-import { UserDelailComponent } from './views/users/user-delail/user-delail.component';
 import { TransactionsComponent } from './views/transactions/transactions.component';
 import { CreateTransctionModelComponent } from './views/transactions/create-transction-model/create-transction-model.component';
 import { DeleteTransctionModelComponent } from './views/transactions/delete-transction-model/delete-transction-model.component';
@@ -17,20 +16,24 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { DetailTransctionComponent } from './views/transactions/detail-transction/detail-transction.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     UserCreateComponent,
-    UserDelailComponent,
     TransactionsComponent,
     CreateTransctionModelComponent,
-    DeleteTransctionModelComponent
+    DeleteTransctionModelComponent,
+    DetailTransctionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatToolbarModule,
@@ -38,6 +41,7 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatInputModule,
     MatCardModule,
+    MatDialogModule,
     HttpClientModule
   ],
   providers: [],

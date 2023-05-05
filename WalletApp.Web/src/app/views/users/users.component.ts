@@ -7,7 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 export interface UserBaseModels {
   id: string;
   firstName: string;
-  lastName: number;
+  lastName: string;
 }
 
 export interface BlocsModel {

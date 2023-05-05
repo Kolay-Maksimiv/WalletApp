@@ -4,7 +4,7 @@
             <mat-toolbar color="primary">
                 <span>Wellet App</span>
                 <span class="spacer"></span>
-                <button mat-icon-button class="example-icon favorite-icon"
+                <button mat-icon-button class="example-icon favorite-icon" (click)="openCreateTrasaction()"
                     aria-label="Example icon-button with heart icon">
                     <mat-icon>my_library_add</mat-icon>
                 </button>
@@ -50,10 +50,19 @@
                     <td mat-cell *matCellDef="let element"> <img [src]="element.icon"> </td>
                 </ng-container>
 
+                <ng-container matColumnDef="detailTransaction">
+                    <th mat-header-cell *matHeaderCellDef>Detail Transaction</th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-mini-fab color="primary"
+                            style="margin: auto;"><mat-icon>keyboard_arrow_right</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
                 <ng-container matColumnDef="deleteTransaction">
                     <th mat-header-cell *matHeaderCellDef>Delete Transaction</th>
                     <td mat-cell *matCellDef="let element">
-                        <button mat-mini-fab color="warn"
+                        <button mat-mini-fab color="warn" (click)="openDeleteTransaction()"
                             style="margin: auto;"><mat-icon>delete_forever</mat-icon>
                         </button>
                     </td>
