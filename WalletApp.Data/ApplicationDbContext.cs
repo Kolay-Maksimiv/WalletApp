@@ -9,7 +9,7 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<User> Users { get; set; }
     public DbSet<Transaction> Transactions { get; set; }
-    public DbSet<Icon> Icons { get; set; }
+    //public DbSet<Icon> Icons { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<User>(

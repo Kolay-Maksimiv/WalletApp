@@ -9,13 +9,8 @@ public static class DbContextExtensions
     {
         var connectionString = configuration.GetConnectionString("AppConnection");
 
-        //services.AddDbContext<ApplicationDbContext>(options =>
-        //    options.UseNpgsql(connectionString, b => b.MigrationsAssembly("WalletApp.Data")));
-
-
         services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString),
-                                            b => b.MigrationsAssembly("WalletApp.Data")));
+            options.UseNpgsql(connectionString, b => b.MigrationsAssembly("WalletApp.Data")));
 
         return services;
     }

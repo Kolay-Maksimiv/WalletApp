@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WalletApp.Data;
 
 #nullable disable
@@ -11,7 +12,7 @@ using WalletApp.Data;
 namespace WalletApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230504234104_InitialUser")]
+    [Migration("20230505231158_InitialUser")]
     partial class InitialUser
     {
         /// <inheritdoc />
@@ -20,21 +21,23 @@ namespace WalletApp.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.5")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("WalletApp.Core.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("longtext")
+                        .HasColumnType("text")
                         .HasColumnName("first_name");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("longtext")
+                        .HasColumnType("text")
                         .HasColumnName("last_name");
 
                     b.HasKey("Id");

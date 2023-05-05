@@ -46,8 +46,8 @@ public class TransactionService : ITransactionService
         return new TransactionsListModel
         {
             LatestTransactions = _mapper.Map<List<TransactionViewModel>>(userTransactions
-                                            .OrderByDescending(x => x.Id)
-                                            .Take(10))
+                                        .OrderByDescending(x => x.Id)
+                                        .Take(10))
         };
     }
 
@@ -59,7 +59,7 @@ public class TransactionService : ITransactionService
         {
             CardBalance = cardBalance,
             Available = available,
-            NoPaymentDue = $"You’ve paid your {DateTime.Now:MMM} balance",
+            NoPaymentDue = $"You’ve paid your {DateTime.UtcNow:MMM} balance",
             DailyPoints = CalculateDailyPoints() / 1000,
         };
     }

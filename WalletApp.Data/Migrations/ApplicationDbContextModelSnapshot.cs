@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WalletApp.Data;
 
 #nullable disable
@@ -17,18 +18,22 @@ namespace WalletApp.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.5")
-                .HasAnnotation("Relational:MaxIdentifierLength", 64);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("WalletApp.Core.Entities.Icon", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("IconUrl")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("text")
                         .HasColumnName("icon_url");
 
                     b.HasKey("Id");
@@ -40,45 +45,47 @@ namespace WalletApp.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("id");
 
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
                     b.Property<DateTime>("DateTransaction")
-                        .HasColumnType("datetime(6)")
+                        .HasColumnType("timestamp with time zone")
                         .HasColumnName("date_transaction");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("text")
                         .HasColumnName("description");
 
                     b.Property<int?>("IconId")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("icon_id");
 
                     b.Property<bool>("IsPending")
-                        .HasColumnType("tinyint(1)")
+                        .HasColumnType("boolean")
                         .HasColumnName("is_pending");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("text")
                         .HasColumnName("name");
 
                     b.Property<Guid>("OwnerId")
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uuid")
                         .HasColumnName("owner_id");
 
                     b.Property<string>("SenderName")
                         .IsRequired()
-                        .HasColumnType("longtext")
+                        .HasColumnType("text")
                         .HasColumnName("sender_name");
 
                     b.Property<double>("Sum")
-                        .HasColumnType("double");
+                        .HasColumnType("double precision");
 
                     b.Property<int>("TypeTransaction")
-                        .HasColumnType("int")
+                        .HasColumnType("integer")
                         .HasColumnName("type_transaction");
 
                     b.HasKey("Id");
@@ -94,15 +101,15 @@ namespace WalletApp.Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)")
+                        .HasColumnType("uuid")
                         .HasColumnName("id");
 
                     b.Property<string>("FirstName")
-                        .HasColumnType("longtext")
+                        .HasColumnType("text")
                         .HasColumnName("first_name");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("longtext")
+                        .HasColumnType("text")
                         .HasColumnName("last_name");
 
                     b.HasKey("Id");
