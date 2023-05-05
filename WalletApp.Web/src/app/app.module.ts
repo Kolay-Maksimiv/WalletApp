@@ -16,9 +16,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-import { DetailTransctionComponent } from './views/transactions/detail-transction/detail-transction.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { DetailTransctionModelComponent } from './views/transactions/detail-transction-model/detail-transction-model.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TransactionsComponent,
     CreateTransctionModelComponent,
     DeleteTransctionModelComponent,
-    DetailTransctionComponent,
+    DetailTransctionModelComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatCardModule,
     MatDialogModule,
+    MatSelectModule,
+    MatButtonToggleModule,
     HttpClientModule
   ],
   providers: [],

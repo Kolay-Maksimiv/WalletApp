@@ -1,1 +1,40 @@
-<p>create-transction-model works!</p>
+<form [formGroup]="data.fg">
+  <div class="mb-3">
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Ex. First Name" type="text" formControlName="name">
+    </mat-form-field>
+  </div>
+  <div class="mb-3">
+    <mat-form-field class="example-full-width">
+      <mat-label>Description</mat-label>
+      <input matInput placeholder="Ex. First Name" type="text" formControlName="description">
+    </mat-form-field>
+  </div>
+  <div class="mb-3">
+    <mat-form-field class="example-full-width">
+      <mat-label>Sender Name</mat-label>
+      <input matInput placeholder="Ex. First Name" type="text" formControlName="senderName">
+  </mat-form-field>
+  </div>
+  <div class="mb-3">
+    <mat-form-field class="example-full-width">
+      <mat-label>Sum</mat-label>
+      <input matInput placeholder="Ex. First Name" type="text" formControlName="sum">
+  </mat-form-field>
+  </div>
+  <div class="mb-3">
+    <mat-form-field appearance="fill">
+      <mat-label>Type Transaction</mat-label>
+      <mat-select name="type" formControlName="typeTransaction">
+        <mat-option *ngFor="let type of types" [value]="type.value">
+          {{type.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button (click)="onNoClick()">Скасувати</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data.fg.value" cdkFocusInitial>Додати</button>
+  </div>
+</form>

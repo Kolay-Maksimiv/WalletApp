@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { CreateTransctionModelComponent } from './create-transction-model/create-transction-model.component';
 import { DeleteTransctionModelComponent } from './delete-transction-model/delete-transction-model.component';
+import { DetailTransctionModelComponent } from './detail-transction-model/detail-transction-model.component';
 
 export interface TransactionsListModel {
   latestTransactions: TransactionViewModel[];
@@ -40,9 +41,24 @@ export class TransactionsComponent {
   }
 
   openCreateTrasaction() {
-    this.dialog.open(CreateTransctionModelComponent, {
+    const dialogRef =  this.dialog.open(CreateTransctionModelComponent, {
       data: {
         userId: this.userId
+      }
+    });
+   dialogRef.afterClosed().subscribe(res=> {
+      if (res) {
+        this.transactionService.create(res).pipe().subscribe(() => {
+          this.transactions$ = this.transactions$.pipe(map(transactions => [...transactions, res]));
+        });
+      }
+    });
+  }
+
+  opneDetailTransaction(id: number) {
+    this.dialog.open(DetailTransctionModelComponent, {
+      data : {
+        id: id
       }
     });
   }

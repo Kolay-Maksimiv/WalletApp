@@ -45,7 +45,9 @@ public class TransactionService : ITransactionService
 
         return new TransactionsListModel
         {
-            LatestTransactions = _mapper.Map<List<TransactionViewModel>>(userTransactions.Take(10))
+            LatestTransactions = _mapper.Map<List<TransactionViewModel>>(userTransactions
+                                            .OrderByDescending(x => x.Id)
+                                            .Take(10))
         };
     }
 

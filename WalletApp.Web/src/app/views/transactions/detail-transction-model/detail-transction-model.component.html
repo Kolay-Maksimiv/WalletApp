@@ -1,0 +1,11 @@
+<mat-card  *ngIf="transaction$ | async as item" >
+    <mat-card-header>
+      <mat-card-subtitle> Name : {{item.name}}</mat-card-subtitle>
+      <mat-card-title>Description: {{item.description}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Date Transaction: {{item.dateTransaction}}</p>
+      <p>Sender Name:{{item.senderName}}</p>
+      <p>Sum {{item.sum}}</p>
+    </mat-card-content>
+  </mat-card>

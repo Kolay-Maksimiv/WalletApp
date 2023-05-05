@@ -1,4 +1,5 @@
-﻿using WalletApp.Core.Enums;
+﻿using System.Text.Json.Serialization;
+using WalletApp.Core.Enums;
 
 namespace WalletApp.Core.Models;
 
@@ -33,6 +34,8 @@ public class TransactionViewModel: TransactionBaseModel
 
 public class CreateTransactionModel : TransactionBaseModel
 {
+    [JsonIgnore]
+    public int Id { get; set; }
     public string OwnerId { get; set; }
     public double Sum { set; get; }
     public bool IsPending { set; get; }

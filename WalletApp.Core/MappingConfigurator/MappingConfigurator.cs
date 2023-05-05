@@ -11,7 +11,7 @@ public class MappingConfigurator : Profile
     {
         CreateMap<Transaction, TransactionViewModel>()
             .ForMember(x => x.DateTransaction,
-                opt => opt.MapFrom(x => x.DateTransaction.Date >= DateTime.Now.Date
+                opt => opt.MapFrom(x => x.DateTransaction >= DateTime.Now.AddDays(-7)
                         ? DateTime.Now.ToString("dddd")
                         : x.DateTransaction.ToString("dd/MM/yy")))
             .ForMember(x => x.Sum,
